@@ -11,6 +11,16 @@ export default {
     return response.json(orphanages);
   },
 
+  async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const orphanagesRepository = getRepository(Orphanage);
+
+    const orphanage = await orphanagesRepository.findOneOrFail(id);
+
+    return response.json(orphanage);
+  },
+
   async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
@@ -21,6 +31,11 @@ export default {
       opening_hours,
       open_on_weekends,
     } = request.body;
+
+    const requestImages = request.files as Express.Multer.File[];
+    const images = requestImages.map(image => ({
+      path: image.filename,
+    }));
 
     try {
       const orphanagesRepository = getRepository(Orphanage);
@@ -33,6 +48,7 @@ export default {
         instructions,
         opening_hours,
         open_on_weekends,
+        images,
       });
 
       await orphanagesRepository.save(orphanage);

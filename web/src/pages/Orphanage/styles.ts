@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface IOpenDetailsWeekends {
+  open?: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   min-height: 100vh;
@@ -44,7 +48,7 @@ export const DetailsImages = styled.div`
 
     opacity: 0.6;
 
-    &:active {
+    &.active {
       opacity: 1;
     }
 
@@ -135,10 +139,14 @@ export const OpenDetailsHour = styled.div`
   color: #5c8599;
 `;
 
-export const OpenDetailsWeekends = styled.div`
-  background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
-  border: 1px solid #a1e9c5;
-  color: #37c77f;
+export const OpenDetailsWeekends = styled.div<IOpenDetailsWeekends>`
+  background: linear-gradient(
+    154.16deg,
+    ${props => (props.open ? '#edfff6' : '#FDF0F5')} 7.85%,
+    #ffffff 91.03%
+  );
+  border: 1px solid ${props => (props.open ? '#a1e9c5' : '#FFBCD4')};
+  color: ${props => (props.open ? '#37c77f' : '#FF669D')};
 `;
 
 export const ContactButton = styled.button`

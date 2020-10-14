@@ -61,6 +61,12 @@ export const Form = styled.form`
 
   overflow: hidden;
 
+  .leaflet-container {
+    margin-bottom: 40px;
+    border: 1px solid #d3e2e5;
+    border-radius: 20px;
+  }
+
   fieldset {
     border: 0;
 
@@ -144,21 +150,16 @@ export const InputBlock = styled.div`
     padding: 0 16px;
   }
 
+  input[type='file'] {
+    visibility: hidden;
+  }
+
   textarea {
     min-height: 120px;
     max-height: 240px;
     resize: vertical;
     padding: 16px;
     line-height: 28px;
-  }
-
-  .new-image {
-    width: 100%;
-    height: 64px;
-    background: #f5f8fa;
-    border: 1px dashed #96d2f0;
-    border-radius: 20px;
-    cursor: pointer;
   }
 
   .button-select {
@@ -186,5 +187,30 @@ export const InputBlock = styled.div`
         border-left: 0;
       }
     }
+  }
+`;
+
+export const ImagesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+
+  label {
+    height: 96px;
+    background: #f5f8fa;
+    border: 1px dashed #96d2f0;
+    border-radius: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 20px;
   }
 `;

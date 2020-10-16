@@ -1,5 +1,5 @@
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
-import { TouchableOpacity } from 'react-native';
 
 export const CalloutView = styled.View.attrs({
   paddingHorizontal: 16,
@@ -38,7 +38,7 @@ export const FooterText = styled.Text`
   font-family: 'Nunito_700Bold';
 `;
 
-export const CreateOrphanageButton = styled(TouchableOpacity)`
+export const CreateOrphanageButton = styled(RectButton)`
   width: 56px;
   height: 56px;
   background-color: #15c3d6;
